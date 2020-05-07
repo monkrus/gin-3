@@ -7,8 +7,8 @@ import (
 )
 
 type VideoController interface {
-	FindAll() []entity.Video
-	Save(ctx *gin.Context) entity.Video
+	FindAll() []entity.Video 
+	Save(ctx *gin.Context) error
 }
 
 // implement that interface
@@ -26,9 +26,12 @@ func (c *controller) FindAll() []entity.Video {
 	return service.New().FindAll()
 }
 
-func (c *controller) Save(ctx *gin.Context) entity.Video {
-	var video entity.Video
-	ctx.BindJSON(&video)
-	c.service.Save(video)
-	return video
+func (c *controller) Save(ctx *gin.Context) error {
+	var video entity.Video 
+	err := ctx.ShouldBindJSON(&video)
+	if err != nil {
+		return err
+	}
+	c.service.Save(video) 
+	return nil
 }
