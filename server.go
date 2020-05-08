@@ -6,9 +6,9 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/monkrus/gin-2/middlewares"
-	"github.com/monkrus/gin/controller"
-	"github.com/monkrus/gin/service"
+	"github.com/monkrus/gin-3/controller"
+	"github.com/monkrus/gin-3/middlewares"
+	"github.com/monkrus/gin-3/service"
 	gindump "github.com/tpkeeper/gin-dump"
 )
 
